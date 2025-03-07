@@ -36,6 +36,7 @@ If a module offers a speed boost, always import and use it.
 Make sure they are modules included with Python.
 Don't add a main to call the class or run the program.
 Make sure the program runs as fast as possible.
+Try to be as memory efficient as possible.
 
 Question: {question}
 
@@ -59,3 +60,7 @@ print("Snippet generated.")
 
 pyperclip.copy(ans)
 print("Copied to clipboard")
+
+pyautogui.click()
+pyautogui.hotkey("command", "a")
+pyautogui.hotkey("command", "v")
