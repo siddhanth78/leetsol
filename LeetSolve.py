@@ -7,7 +7,7 @@ import pyautogui
 import pyperclip
 import pygame, sys
 
-screen = pygame.display.set_mode((500, 20))
+screen = pygame.display.set_mode((500, 30))
 pygame.display.set_caption("LeetSolve")
 
 warnings.filterwarnings("ignore", message="cumsum_out_mps supported by MPS on MacOS 13+")
