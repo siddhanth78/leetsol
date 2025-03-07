@@ -8,6 +8,7 @@ import pyperclip
 import pygame, sys
 
 screen = pygame.display.set_mode((500, 20))
+pygame.display.set_caption("LeetSolve")
 
 warnings.filterwarnings("ignore", message="cumsum_out_mps supported by MPS on MacOS 13+")
 model = OllamaLLM(model="qwen2.5:7b")
@@ -22,7 +23,7 @@ def screenshots():
 def extract_text_from_image(image, snip):
     return pytesseract.image_to_string(image), pytesseract.image_to_string(snip)
 
-def get_solution(model):
+def get_solution(model, screen):
     screenshots()
     question, snipp = extract_text_from_image(Image.open("q.png"), Image.open("sn.png"))
 
@@ -30,6 +31,9 @@ def get_solution(model):
 
     print(question+"\n")
     print(snipp+"\n")
+
+    screen.fill((255,165,0))
+    pygame.display.update()
 
     template = """Solve the incomplete snippet in the question in Python 3.
 If a module offers a speed boost, always import and use it.
@@ -77,7 +81,7 @@ while True:
                     status = (255,255,0)
                     screen.fill(status)
                     pygame.display.update()
-                    get_solution(model)
+                    get_solution(model, screen)
                     status = (0,255,0)
             elif (event.key == pygame.K_n) and (event.mod & pygame.KMOD_CTRL):
                 if status == (0,255,0):
